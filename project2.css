@@ -1,0 +1,23 @@
+body
+{
+    background-color: #000;
+    font-family: verdana;
+    font-size: 14px;
+    color: #33FF33;
+}
+
+#instructions
+{
+    background-color: #c0c0c0;
+    color: #aa0000;
+    font-family: monospace;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    top: 420px;
+    left: 200px;
+    width: 30%;
+    border: outset;
+    border-color: #400040;
+    
+}

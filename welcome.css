@@ -1,0 +1,45 @@
+body
+{
+    background-color: #000;
+    font-family: verdana;
+    font-size: 14px;
+    color: #33FF33;
+    border: dotted;
+    border-color: red;
+}
+/* NOTES TO SELF
+// . --- class
+// # --- div id
+*/
+
+
+
+.missionText
+{
+    color: #000000;
+    font-family: monospace;
+    font-size: 18px;
+    cursor: pointer;
+    
+}
+
+.smallText
+{
+    font-size: 4px;
+    color: #00DD00;
+    white-space:normal;
+}
+
+.welcomeRect
+{
+    border: dashed;
+    border-color: #ff0000;
+}
+
+#confirmation
+{
+    position: absolute;
+    left: 125px;
+    top: 425px;
+    text-align: center;
+}

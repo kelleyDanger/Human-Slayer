@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="welcome.css">
+  <title>WELCOME</title>
+  <script type="text/javascript">
+ 	var svgns="http://www.w3.org/2000/svg";
+ 	var xhtmlns="http://www.w3.org/1999/xhtml"
+	
+	//$(document).ready(function(){
+	//    
+	//    //for all future checkboxes
+	//	$('body').on('click','input:checkbox', function()
+	//	{
+	//		$('input[type=checkbox]:checked').css('color', 'aqua');
+	//		$('input[type=checkbox]:not(:checked)').css('color', 'black');
+	//	});
+	//});
+	
+//      function checkAcknowledgement(form){
+//	    var checkbox = form["acknowledgement"];
+//	    if (!checkbox.checked){
+//		alert('Please read through the acknowledgement and acknowledge it.');
+//		return false;
+//	    } else {
+//		 var link = document.createElementNS(svgns, 'a');
+//		  link.setAttributeNS(null,'target','_blank');
+//		  link.setAttributeNS(xlinkns, 'xlink:href', 'project2.html');
+//		  
+//		  document.getElementById("acknowledgement").appendChild(link);
+//	    }
+//      }
+
+     function OpenWindow()
+     {
+      window.open("http://people.rit.edu/kas3101/HumanSlayer/project2.html");
+      }
+      
+     
+</script>
+</head>
+
+<body>
+     
+<div>
+     <svg xmlns="http://wwww.w3.org/2000/svg"
+	xmlns.xlink="http://www.w3.org/1999/xhtml"
+	version="1.1" baseProfile="full" width="800px" height="600px" >
+      
+		<!-- Button -->
+		
+		<rect x="200px" y="350px" width="110px" height="50px"
+		rx="200px" ry="50px" class="button" id="missionButton" style="stroke:white; fill:red; stroke-width:2; z-index: 1;" />
+		
+		<!--<rect x="200px" y="350px" width="120px" height="60px"
+		rx="200px" ry="50px" class="button" id="missionButton" style="background: transparent; stroke-width:2; stroke:white; z-index: 2; " />-->
+		
+		<!--text for button -->
+		<text x="200px" y="380px" width="50px" height="50px" id="mText" class="missionText">
+		>>Mission<<
+		</text>
+
+      <g id="welcomeMessage">
+      <animateTransform attributeName="transform" type="scale" begin="missionButton.click; mText.click " from="1" to="5" dur="1s" repeatCount="1" fill="freeze" additive="sum" id="butt" />
+      <!-- <animateTransform attributeName="transform" type="translate" from="0, 0" to="100px, 100px" fill="freeze" dur="1s" additive="sum" begin="missionButton.click" /> -->
+	  
+     <rect class="welcomeRect" x="0px" y="10px" height="5%" width="20%" id="welcomeMessage" style="border:dashed;"/>
+
+    
+      <switch>
+	  <textArea class="smallText" x="5px" y="15px" width="18%" height="40%" x="0px" y="10px" fill="green" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+	    Welcome cadet!  Your mission is simple, should you choose to accept it.  District Group 4x7-0W3N has once again threatened the continuation of
+	  our race, our grasp of this universe, and the fate of neighboring dwell-nations.
+      
+	  Operation GLA-009TXP8 is planned for comission in less than one revolution.  All dwellers of your
+	  District are required by brutal force to complete this training sequence, as part of the initiative put in place by our Great Leader, Lord Kellgorg.
+	  
+	  By participating in this testing exercise, you agree to be judged upon your performance and agree to possible extermination or deployment.
+	  </textArea>
+      </switch>
+      
+  </g>
+
+     </svg>
+</div>
+
+<div id="confirmation">
+       <h5>Please check this box to assure your conformity:</h5
+       <form>
+      <label for="cb">I Conform</label>
+      
+      <input type="checkbox" id="cb" name="CBox1" value="project2.html" onclick="if(this.checked)
+	    {
+		  OpenWindow(this.value)
+	    }
+	    else
+	    {
+		alert('YOU MUST CONFORM');
+	    }"
+      />
+       
+      
+    
+	
+      <!-- <input type="submit" value="submit" onclick="checkAcknowledgement(this)"/>
+      <!--<a href="project2.html"><input id="nonSubmitButton" type="button" value="submit"/></a>
+	  </form>
+	  -->
+      </form>
+</div>
+
+</body>
+</html>

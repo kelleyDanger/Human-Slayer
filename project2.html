@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="project2.css">
+  <title>HUMAN SLAYER</title>
+  <script type="text/javascript">
+ 	var svgns="http://www.w3.org/2000/svg";
+ 	var xhtmlns="http://www.w3.org/1999/xhtml"
+        var counter = 0;
+	var holeCounter =0;
+
+     function shoot()
+     {
+	   
+	var ufoShip = document.getElementsByTagName('svg')[1];
+	
+	//alert("ufo x is " + ufoShip.currentTranslate.x + "; ufo y is " + ufoShip.currentTranslate.y);
+      
+	 var bullet = document.createElementNS(svgns, 'rect');
+	// alert("the y coord is " + ufoShip.currentTranslate.y);
+	 bullet.setAttributeNS(null, 'y', ufoShip.currentTranslate.y);
+	 bullet.setAttributeNS(null, 'x', ufoShip.currentTranslate.x);
+	 bullet.setAttributeNS(null, 'fill', 'yellow');
+	 bullet.setAttributeNS(null, 'height', '40px');
+	 bullet.setAttributeNS(null, 'width', '40px');
+	 //bullet.setAttributeNS(null, 'stroke-color', 'orange');
+	 //bullet.setAttributeNS(null, 'stroke-width', '2');
+	 
+	 var aniElex = document.createElementNS(svgns, 'animate');
+	 aniElex.setAttributeNS(null, 'dur', '2s');
+	 aniElex.setAttributeNS(null, 'from', ufoShip.currentTranslate.x);
+	 aniElex.setAttributeNS(null, 'to', ufoShip.currentTranslate.x-800);
+	 aniElex.setAttributeNS(null, 'attributeName', 'x');
+	 aniElex.setAttributeNS(null, 'fill', 'freeze');
+	 aniElex.setAttributeNS(null, 'begin', 'indefinite');
+	 bullet.appendChild(aniElex);
+	 document.getElementById('bullets').appendChild(bullet);
+	 var l = document.getElementById('bullets').getElementsByTagName('animate').length;
+	 document.getElementById('bullets').getElementsByTagName('animate')[l-1].beginElement();
+	 
+	 
+	 if(counter == 5)
+	 {
+	  //break;
+	  //alert('you shot 5 times!');
+	  var boundaries = document.getElementById('castleListener').getBBox();
+	  var leftX = boundaries.x+20;
+	  var rightX = leftX + boundaries.width-20;
+	  var leftY = boundaries.y+20;
+	  var rightY = boundaries.y + boundaries.height-20;
+	
+	  var shape = document.createElementNS(svgns, 'circle');
+	  shape.setAttributeNS(null, 'r', '20px');
+	  shape.setAttributeNS(null, 'cx', (Math.random()+300)+"px");
+	  shape.setAttributeNS(null, 'cy', (Math.random()*375)+"px");
+	  shape.setAttributeNS(null, 'fill', 'red' );
+	  shape.setAttributeNS(null, 'stroke', 'white' );
+	  shape.setAttributeNS(null, 'stroke-width', '3');
+	  
+	  document.getElementsByTagName('svg')[0].appendChild(shape);
+	  //holeInCastle();
+	  counter = 0;
+	  holeCounter++;
+	 }
+	 
+	 if(holeCounter == 4)
+	 {
+	  alert("SUCCESS: You have destroyed the invasive humans.");
+	  var aniCastle = document.createElementNS(svgns,"animateTransform");
+	  aniCastle.setAttribute("attributeName", "transform");
+	  aniCastle.setAttribute("type", "skewX" );
+	  aniCastle.setAttribute("from", "0");
+	  aniCastle.setAttribute("to", "20");
+	  aniCastle.setAttribute("begin", "indefinite");
+	  aniCastle.setAttribute("dur", "2s");
+	  aniCastle.setAttribute("fill", "freeze");
+	  
+	  var castle = document.getElementById('castleListener');
+	  var leftSide = document.getElementsByTagName('svg')[0];
+	  castle.appendChild(aniCastle);
+	  aniCastle.beginElement();
+	  
+	  var aniCastleY = document.createElementNS(svgns,"animateTransform");
+	  aniCastleY.setAttribute("attributeName", "transform");
+	  aniCastleY.setAttribute("type", "skewY" );
+	  aniCastleY.setAttribute("from", "0");
+	  aniCastleY.setAttribute("to", "90");
+	  aniCastleY.setAttribute("begin", "indefinite");
+	  aniCastleY.setAttribute("dur", "4s");
+	  aniCastleY.setAttribute("fill", "freeze");
+	  
+	  var castle = document.getElementById('castleListener');
+	  var leftSide = document.getElementsByTagName('svg')[0];
+	  castle.appendChild(aniCastleY);
+	  aniCastleY.beginElement();
+	  
+	  counter = 0;
+	 }
+	 
+	 else
+	 {
+	      counter++;
+	 }
+          
+          
+     }
+     
+//     //creates a hole at the center of the screen
+//     function holeInCastle()
+//     {
+//	    var boundaries = document.getElementById('castleListener').getBBox();
+//	  var leftX = boundaries.x+20;
+//	  var rightX = leftX + boundaries.width-20;
+//	  var leftY = boundaries.y+20;
+//	  var rightY = boundaries.y + boundaries.height-20;
+//          var shape = document.createElementNS(svgns, 'circle');
+//          shape.setAttributeNS(null, 'r', '20px');
+//	  shape.setAttributeNS(null, 'cx', (Math.floor(Math.random()*rightX)+leftX)+"px");
+//          shape.setAttributeNS(null, 'cy', (Math.floor(Math.random()*rightY)+leftY)+"px");
+//          shape.setAttributeNS(null, 'fill', 'red' );
+//          shape.setAttributeNS(null, 'stroke', 'white' );
+//          shape.setAttributeNS(null, 'stroke-width', '3');
+//	  document.getElementsByTagName('svg')[0].appendChild(shape);
+//     }
+     
+     function createUFO()
+     {
+     var ship = document.createElementNS(svgns, 'ellipse');
+     ship.setAttributeNS(null, 'cx', '0px');
+     ship.setAttributeNS(null, 'cy', '5px');
+     ship.setAttributeNS(null, 'rx', '100px');
+     ship.setAttributeNS(null, 'ry', '50px');
+     ship.setAttributeNS(null, 'fill', 'purple');
+     ship.setAttributeNS(null, 'stroke', 'black');
+     ship.setAttributeNS(null, 'stroke-width', '6');
+     
+     var innerShip = document.createElementNS(svgns, 'ellipse');
+     innerShip.setAttributeNS(null, 'cx', '0px');
+     innerShip.setAttributeNS(null, 'cy', '5px');
+     innerShip.setAttributeNS(null, 'rx', '100px');
+     innerShip.setAttributeNS(null, 'ry', '25px');
+     innerShip.setAttributeNS(null, 'fill', 'gray');
+     innerShip.setAttributeNS(null, 'stroke', 'black');
+     innerShip.setAttributeNS(null, 'stroke-width', '3');
+     
+     var alien = document.createElementNS(svgns, 'circle');
+     alien.setAttributeNS(null, 'id', 'listenerTarget');
+     alien.setAttributeNS(null, 'cx', '0px');
+     alien.setAttributeNS(null, 'cy', '5px');
+     alien.setAttributeNS(null, 'r', '40px');
+     alien.setAttributeNS(null, 'fill', 'green');
+     alien.setAttributeNS(null, 'stroke', 'black');
+     alien.setAttributeNS(null, 'stroke-width', '2');
+     
+     //var alienEyeL = document.createElementNS(svgns, 'circle');
+     //alien.setAttributeNS(null, 'id', 'alienEyeL');
+     //alien.setAttributeNS(null, 'cx', '120px');
+     //alien.setAttributeNS(null, 'cy', '310px');
+     //alien.setAttributeNS(null, 'r', '10px');
+     //alien.setAttributeNS(null, 'fill', 'black');
+     //alien.setAttributeNS(null, 'stroke', 'white');
+     //alien.setAttributeNS(null, 'stroke-width', '2');
+     //
+     //var alienEyeR = document.createElementNS(svgns, 'circle');
+     //alien.setAttributeNS(null, 'id', 'alienEyeR');
+     //alien.setAttributeNS(null, 'cx', '175px');
+     //alien.setAttributeNS(null, 'cy', '280px');
+     //alien.setAttributeNS(null, 'r', '10px');
+     //alien.setAttributeNS(null, 'fill', 'black');
+     //alien.setAttributeNS(null, 'stroke', 'white');
+     //alien.setAttributeNS(null, 'stroke-width', '2');
+     
+     var castle = document.createElementNS(svgns, 'rect');
+     castle.setAttributeNS(null, 'id', 'castleListener');
+     castle.setAttributeNS(null, 'x', '300px');
+     castle.setAttributeNS(null, 'y', '5px');
+     castle.setAttributeNS(null, 'width', '30%');
+     castle.setAttributeNS(null, 'height', '200%');
+     castle.setAttributeNS(null, 'fill', 'gray');
+     
+     var grass = document.createElementNS(svgns, 'rect');
+     grass.setAttributeNS(null, 'x', '0%');
+     grass.setAttributeNS(null, 'y', '98%');
+     grass.setAttributeNS(null, 'width', '100%');
+     grass.setAttributeNS(null, 'height', '5%');
+     grass.setAttributeNS(null, 'fill', 'green');
+     
+     document.getElementById('ufoG').appendChild(ship);
+     document.getElementById('ufoG').appendChild(innerShip);
+     document.getElementById('ufoG').appendChild(alien);
+     //document.getElementById('ufo').appendChild(alienEyeL);
+     //document.getElementById('ufo').appendChild(alienEyeR);
+     
+     document.getElementsByTagName('svg')[0].appendChild(castle);
+     document.getElementsByTagName('svg')[0].appendChild(grass);
+     
+     document.getElementById('listenerTarget').addEventListener('mousedown',
+ 			shoot, false);
+                        
+     document.getElementById('castleListener').addEventListener('mousedown',
+ 			holeInCastle, false);
+          
+          
+     
+     }
+     
+     
+     function blowUpCastle()
+     {
+	var bomb = document.createElementNS(svgns, 'rect');
+	bomb.setAttributeNS(null, 'y', '600px');
+	bomb.setAttributeNS(null, 'x', '150px');
+	bomb.setAttributeNS(null, 'fill', 'red');
+	bomb.setAttributeNS(null, 'height', '40px');
+	bomb.setAttributeNS(null, 'width', '40px');
+	//bullet.setAttributeNS(null, 'stroke-color', 'orange');
+	//bullet.setAttributeNS(null, 'stroke-width', '2');
+	
+	var aniBomb = document.createElementNS(svgns, 'animate');
+	aniEleBomb.setAttributeNS(null, 'dur', '2s');
+	aniBomb.setAttributeNS(null, 'from', '800px');
+	aniBomb.setAttributeNS(null, 'to', '1000px');
+	aniBomb.setAttributeNS(null, 'attributeName', 'x');
+	aniBomb.setAttributeNS(null, 'begin', 'indefinite');
+	bomb.appendChild(aniBomb);
+	document.getElementById('svg').appendChild(bomb);
+	var l = document.getElementById('svg')[1].getElementsByTagName('aniBomb').length;
+	document.getElementById('svg')[1].getElementsByTagName('animate')[l-1].beginElement();
+	
+     }
+     
+     function moveUfo(direction)
+    {
+      //alert("the direction is " + direction);
+      ufoShip = document.getElementsByTagName('svg')[1];
+      if(direction == 'left')
+      {
+	console.log("hi");
+	//alert("the x value before is " + ufoShip.currentTranslate.x);
+	ufoShip.currentTranslate.x-=5;
+	//alert("the x value after is " + ufoShip.currentTranslate.x);
+      }
+      else if(direction == 'right')
+      {
+	ufoShip.currentTranslate.x+=5;
+      }
+      else if(direction == 'up')
+      {
+	ufoShip.currentTranslate.y-=5;
+      }
+      else if(direction == 'down')
+      {
+	ufoShip.currentTranslate.y+=5;
+      }
+      
+    }
+     
+     
+</script>
+</head>
+
+<body onload="createUFO()">   
+
+<div>
+
+
+   <svg xmlns="http://wwww.w3.org/2000/svg"
+	xmlns.xlink="http://www.w3.org/1999/xhtml"
+	version="1.1" baseProfile="full" width="400px" height="400px" >
+     
+    <text x="20px" y="20px" style="font-family: monospace; font-size:12px; fill:green;" onmousemove="moveUfo('up')">Move Up</text>
+	
+    <text x="100px" y="20px" style="font-family: monospace; font-size:12px; fill:green;" onmousemove="moveUfo('down')">Move Down</text>
+    
+    <text x="20px" y="60px" style="font-family: monospace; font-size:12px; fill:green;" onmousemove="moveUfo('left')">Move Left</text>
+	
+    <text x="100px" y="60px" style="font-family: monospace; font-size:12px; fill:green;" onmousemove="moveUfo('right')">Move Right</text>
+    
+     <path id="myPath" d="M350 30 C 300 200, 200 200, 150 400" fill="none" />
+     <g id="human">
+	    <circle cx="0px" cy="0px" r="20px" fill="yellow">
+	    <animateMotion begin="1s" dur="4s" repeatCount="indefinite">
+		<mpath xlink:href="#myPath" />
+	    </animateMotion>
+	    </circle>
+	    
+	    <text x="20px" y="0px" style="font-family: monospace; font-size:12px; fill:white;">AhHHhh!!!
+		  <animateMotion begin="1s" dur="4s" repeatCount="indefinite">
+		  <mpath xlink:href="#myPath" />
+		  </animateMotion>
+	    </text>
+     </g>
+      
+     
+     </svg>
+     
+     <svg xmlns="http://wwww.w3.org/2000/svg"
+	xmlns.xlink="http://www.w3.org/1999/xhtml"
+	version="1.1" baseProfile="full" x="0px" y="0px" width="400px" height="400px" >
+	
+	<g id="ufoG" transform="translate(0,0)">
+	 </g>
+      
+	
+	<!-- bullets -->
+     <g id="bullets"></g>
+	
+      </svg>
+    
+</div>
+
+<div id="instructions">
+      ***INSTRUCTIONS***
+      <br>1.  Use the directional pad located in the top left hand of the screen to move the Aircraft provided.
+      <br>2.  Click on the green alien to engage your weapons.
+      <br>3.  For every 5 hits upon the Human's structure, a hole shall puncture their defense.
+      <br>4.  After 4 holes, the humans and their structure shall perish.
+
+</div>
+
+</body>
+</html>
