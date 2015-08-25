@@ -5,4 +5,4 @@ Human Slayer applied the unique vector drawing capabilities of SVG into an inter
 Instructions for play were provided to the user through the use of animations and JavaScript. 
 Primitive SVG shapes were used in combination with curves.
 
-**Note: ** to be viewed using either Opera or Safari browser due to viewing compatability.
+**Note:** to be viewed using either Opera or Safari browser due to viewing compatability.
